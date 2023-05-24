@@ -1,0 +1,22 @@
+class TakeSkip:
+
+    def __init__(self, step, count):
+        self.step = step
+        self.count = count
+        self.iterations = -1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.iterations == self.count - 1:
+            raise StopIteration
+
+        self.iterations += 1
+
+        return self.iterations * self.step
+
+
+numbers = TakeSkip(2, 6)
+for number in numbers:
+    print(number)
